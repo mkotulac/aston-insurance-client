@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aston insurance</title>
+</head>
+<body>
+<form data-bind="submit: saveData">
+    <div>
+        <label for="insuranceType">Variant poistenia</label><br>
+        <select id="insuranceType"
+                required
+                data-bind="options: insuranceTypeOptions,
+                           optionsText: 'value',
+                           value: insuranceType,
+                           optionsCaption: ''">
+        </select>
+    </div>
+    <br>
+
+    <div>
+        <label for="startDate">Začiatok poistenia</label><br>
+        <input id="startDate" type="date" required data-bind="value: startDate">
+    </div>
+    <br>
+
+    <div data-bind="visible: isShortTermInsuranceType">
+        <label for="endDate">Koniec poistenia</label><br>
+        <input id="endDate" type="date" data-bind="value: endDate">
+    </div>
+    <br data-bind="visible: isShortTermInsuranceType">
+
+    <div>
+        <label for="insurancePackage">Balík</label><br>
+        <select id="insurancePackage"
+                required
+                data-bind="options: insurancePackageOptions,
+                           optionsText: 'value',
+                           value: insurancePackage,
+                           optionsCaption: ''">
+        </select>
+    </div>
+    <br>
+
+    <div>
+        <label for="additionalInsurance">Pripoistenia</label><br>
+        <select multiple size="3" id="additionalInsurance"
+                data-bind="options: additionalInsuranceOptions,
+                           optionsText: 'value',
+                           selectedOptions: additionalInsurance,
+                           optionsCaption: ''">
+        </select>
+    </div>
+    <br>
+
+    <div>
+        <label for="numberOfPeople">Počet osôb (1 až 3):</label><br>
+        <input type="number" id="numberOfPeople" name="numberOfPeople" min="1" max="3" required
+               data-bind="value: numberOfPeople">
+    </div>
+    <br>
+
+    <input type="submit" value="Odoslať"><br><br>
+
+    <h3 style="display:inline;"><span id="priceLabel" hidden>Cena poistenia: </span></h3>
+    <h2 style="display:inline;"><span id="price" hidden></span></h2>
+
+</form>
+
+<script type="text/javascript" src="knockout-3.5.1.js"></script>
+<script type="text/javascript" src="API.js"></script>
+<script type="text/javascript" src="App.js"></script>
+</body>
+
+
+</html>
